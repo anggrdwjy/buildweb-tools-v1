@@ -30,7 +30,7 @@ read -p " Select List : " choice;
 echo "                                                            ";
 case $choice in
 
-1) read -p "Install Apache2 Now? y/n :' -n 1 -r
+1) read -p "Install Apache2 Now? y/n :" -n 1 -r
    echo ""
    echo " ";
    if [[ ! $REPLY =~ ^[Nn]$ ]]
@@ -46,7 +46,7 @@ case $choice in
    fi
    ;;
 
-2) read -p "Check Log Web Server? y/n :' -n 1 -r
+2) read -p "Check Log Web Server? y/n :" -n 1 -r
    echo ""
    echo " ";
    if [[ ! $REPLY =~ ^[Nn]$ ]]
@@ -61,7 +61,7 @@ case $choice in
    fi
    ;;
 
-3) read -p "Install PHP? y/n :' -n 1 -r
+3) read -p "Install PHP? y/n :" -n 1 -r
    echo ""
    echo " ";
    if [[ ! $REPLY =~ ^[Nn]$ ]]
@@ -78,14 +78,14 @@ case $choice in
    fi
    ;;
 
-4) read -p "Install MySQL? y/n :' -n 1 -r
+4) read -p "Install MySQL? y/n :" -n 1 -r
    echo ""
    echo " ";
    if [[ ! $REPLY =~ ^[Nn]$ ]]
    then
    sudo apt-get update
    sudo apt install mysql-server
-   echo -n "Password Root Your Database : "
+   echo -n "Password Root Your Database : ";
    read passmysql
    sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '$passmysql';" 
    sudo clear
