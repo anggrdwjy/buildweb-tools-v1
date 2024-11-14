@@ -93,26 +93,27 @@ case $choice in
    fi
    ;;
 
-5)  echo -n "Input Your Domain : "
-    read domain
-    if [ -z "$(ls -A /home/$domain/*)" ]; then
-    echo "Install Virtual Host With Domain"
-    sudo useradd -m $domain
-    sudo passwd $domain
-    sudo mkdir -p /home/$domain/public_html
-    sudo chown -r $domain.$domain /home/$domain/public_html
-    sudo chmod -R 755 /home/$domain
-    echo "Web Server Work !!!" >> /home/$domain/public_html/index.html
-    sudo chmod 755 /home/$domain/public_html/index.html
-    sudo chown $domain.$domain /home/$domain/public/index.html
-    sudo cp asset/apache2.conf /etc/apache2/
-    sudo cp asset/domain.conf /etc/apache2/sites-available/$domain.conf
-    sudo nano /etc/apache2/sites-available/$domain.conf
-    sudo a2ensite $domain.conf
-    sudo service apache2 reload
-    else
-    echo "Domain yang anda masukkan sudah ada"
-    fi
+5) echo -n "Input Your Domain : "
+   read domain
+   if [ -z "$(ls -A /home/$domain/*)" ]; then
+   echo "Install Virtual Host With Domain"
+   sudo useradd -m $domain
+   sudo passwd $domain
+   sudo mkdir -p /home/$domain/public_html
+   sudo chown -r $domain.$domain /home/$domain/public_html
+   sudo chmod -R 755 /home/$domain
+   echo "Web Server Work !!!" >> /home/$domain/public_html/index.html
+   sudo chmod 755 /home/$domain/public_html/index.html
+   sudo chown $domain.$domain /home/$domain/public/index.html
+   sudo cp asset/apache2.conf /etc/apache2/
+   sudo cp asset/domain.conf /etc/apache2/sites-available/$domain.conf
+   sudo nano /etc/apache2/sites-available/$domain.conf
+   sudo a2ensite $domain.conf
+   sudo service apache2 reload
+   else
+   echo "Your Domain Available"
+   fi
+   ;;
 
 6) read -p "Check Log Web Server? y/n :" -n 1 -r
    echo  ""
