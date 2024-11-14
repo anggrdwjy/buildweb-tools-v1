@@ -57,9 +57,6 @@ case $choice in
    if [[ ! $REPLY =~ ^[Nn]$ ]]
    then
    sudo apt-get update
-   sudo apt-get install software-properties-common
-   sudo add-apt-repository ppa:onderj/php
-   sudo apt-get update
    sudo apt-get install php
    sudo cp asset/phpinfo.php /var/www/html
    echo " |===========================================|";
