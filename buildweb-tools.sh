@@ -66,7 +66,19 @@ case $choice in
    fi
    ;;
 
-3) read -p "Install MySQL? y/n :" -n 1 -r
+3) read -p "Install PHPMyAdmin? y/n :" -n 1 -r
+   echo  ""
+   echo "                                             ";
+   if [[ ! $REPLY =~ ^[Nn]$ ]]
+   then
+   sudo apt-get install phpmyadmin
+   echo " |===========================================|";
+   echo " | Check PHP : http://your-ip/phpmyadmin     |";
+   echo " |===========================================|";
+   fi
+   ;;
+   
+4) read -p "Install MySQL? y/n :" -n 1 -r
    echo  ""
    echo "                                             ";
    if [[ ! $REPLY =~ ^[Nn]$ ]]
@@ -81,7 +93,28 @@ case $choice in
    fi
    ;;
 
-4) read -p "Check Log Web Server? y/n :" -n 1 -r
+5)  echo -n "Input Your Domain : "
+    read domain
+    if [ -z "$(ls -A /home/$domain/*)" ]; then
+    echo "Install Virtual Host With Domain"
+    sudo useradd -m $domain
+    sudo passwd $domain
+    sudo mkdir -p /home/$domain/public_html
+    sudo chown -r $domain.$domain /home/$domain/public_html
+    sudo chmod -R 755 /home/$domain
+    echo "Web Server Work !!!" >> /home/$domain/public_html/index.html
+    sudo chmod 755 /home/$domain/public_html/index.html
+    sudo chown $domain.$domain /home/$domain/public/index.html
+    sudo cp asset/apache2.conf /etc/apache2/
+    sudo cp asset/domain.conf /etc/apache2/sites-available/$domain.conf
+    sudo nano /etc/apache2/sites-available/$domain.conf
+    sudo a2ensite $domain.conf
+    sudo service apache2 reload
+    else
+    echo "Domain yang anda masukkan sudah ada"
+    fi
+
+6) read -p "Check Log Web Server? y/n :" -n 1 -r
    echo  ""
    echo "                                             ";
    if [[ ! $REPLY =~ ^[Nn]$ ]]
@@ -89,8 +122,19 @@ case $choice in
    sudo cat /var/log/apache2/access.log
    fi
    ;;
-   
-5) read -p "Install Bandwidth Monitoring? y/n :" -n 1 -r
+
+7)  echo -n "Input Your Domain : "
+    read domain
+    if [ -z "$(ls -A /etc/apache2/sites-available/$domain.conf)" ]; then
+    echo "Domain Not Found, Install Virtual Host"
+    else
+    sudo nano /etc/apache2/sites-available/$domain.conf
+    sudo a2ensite $domain.conf
+    sudo service apache2 reload
+    fi
+    ;;
+    
+8) read -p "Install Bandwidth Monitoring? y/n :" -n 1 -r
    echo  ""
    echo "                                                  ";
    if [[ ! $REPLY =~ ^[Nn]$ ]]
@@ -106,7 +150,7 @@ case $choice in
    fi
    ;;
    
-6) read -p "Install Monitoring CPU and RAM? y/n :" -n 1 -r
+9) read -p "Install Monitoring CPU and RAM? y/n :" -n 1 -r
    echo  ""
    echo "                                                  ";
    if [[ ! $REPLY =~ ^[Nn]$ ]]
@@ -122,7 +166,7 @@ case $choice in
    fi
    ;;
 
-7) read -p "Reboot Your Server? y/n :" -n 1 -r
+10) read -p "Reboot Your Server? y/n :" -n 1 -r
    echo  ""
    echo "                                                  ";
    if [[ ! $REPLY =~ ^[Nn]$ ]]
@@ -131,7 +175,7 @@ case $choice in
    fi
    ;;
    
-8) exit
+11) exit
    ;;
 
 *)    echo "Sorry, Your Choice Not Available"
