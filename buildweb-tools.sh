@@ -32,34 +32,28 @@ echo "                                                            ";
 case $choice in
 
 1) read -p "Install Apache2 Now? y/n :" -n 1 -r
-   echo ""
-   echo " ";
+   echo  ""
+   echo "                                             ";
    if [[ ! $REPLY =~ ^[Nn]$ ]]
    then
    sudo apt-get update
-   sudo apt-get install apache2
+   sudo apt-get install apache2 -y
    sudo systemctl restart apache2
    fi
    ;;
 
 2) read -p "Check Log Web Server? y/n :" -n 1 -r
-   echo ""
-   echo " ";
+   echo  ""
+   echo "                                             ";
    if [[ ! $REPLY =~ ^[Nn]$ ]]
    then
    sudo cat /var/log/apache2/access.log
-   read -p "Monitoring Log Web Server? y/n :" -n 1 -r
-   echo ""
-   echo " ";
-   if [[ ! $REPLY =~ ^[Nn]$ ]]
-   then
-   sudo tail -f /var/log/apache2/access.log
    fi
    ;;
 
 3) read -p "Install PHP? y/n :" -n 1 -r
-   echo ""
-   echo " ";
+   echo  ""
+   echo "                                             ";
    if [[ ! $REPLY =~ ^[Nn]$ ]]
    then
    sudo apt-get update
@@ -75,8 +69,8 @@ case $choice in
    ;;
 
 4) read -p "Install MySQL? y/n :" -n 1 -r
-   echo ""
-   echo " ";
+   echo  ""
+   echo "                                             ";
    if [[ ! $REPLY =~ ^[Nn]$ ]]
    then
    sudo apt-get update
