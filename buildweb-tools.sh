@@ -26,6 +26,7 @@ echo " |     [4] Install MySQL                                    |";
 echo " |     [5] Exit                                             |";
 echo " |                                                          |";
 echo " ============================================================";
+echo "                                                             ";
 read -p " Select List : " choice;
 echo "                                                            ";
 case $choice in
@@ -37,11 +38,6 @@ case $choice in
    then
    sudo apt-get update
    sudo apt-get install apache2
-   read -p "Restart Apache2 Now? y/n :" -n 1 -r
-   echo  ""
-   echo "                                                  ";
-   if [[ ! $REPLY =~ ^[Nn]$ ]]
-   then
    sudo systemctl restart apache2
    fi
    ;;
@@ -72,9 +68,9 @@ case $choice in
    sudo apt-get update
    sudo apt-get install php
    sudo cp asset/phpinfo.php /var/www/html
-   echo "                                                  ";
-   echo " Check PHP : http://your-ip/phpinfo.php           ";
-   echo "                                                  ";
+   echo " |===========================================|";
+   echo " | Check PHP : http://your-ip/phpinfo.php    |";
+   echo " |===========================================|";
    fi
    ;;
 
@@ -85,7 +81,7 @@ case $choice in
    then
    sudo apt-get update
    sudo apt install mysql-server
-   echo -n "Password Root Your Database : ";
+   echo -n "Password Root Your Database: ";
    read passmysql
    sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '$passmysql';" 
    sudo clear
@@ -95,7 +91,6 @@ case $choice in
 
 5) exit
    ;;
-   
 *)    echo "Sorry, Your Choice Not Available"
 esac
 echo "                                                  ";
