@@ -27,13 +27,11 @@ echo " ##      [2] Install PHP                           ##";
 echo " ##      [3] Install PHPMyAdmin                    ##";
 echo " ##      [4] Install MySQL                         ##";
 echo " ##      [5] Install Virtual Host                  ##";
-echo " ##      [6] Configuration Virtual Host            ##";
-echo " ##      [7] Install Wordpress                     ##";
-echo " ##      [8] Check Log Web Server                  ##";
-echo " ##      [9] Bandwidth Monitoring Server           ##";
-echo " ##      [10] Monitoring CPU and Memory            ##";
-echo " ##      [11] Reboot Server                        ##";
-echo " ##      [12] Exit                                 ##";
+echo " ##      [6] Check Log Web Server                  ##";
+echo " ##      [7] Bandwidth Monitoring Server           ##";
+echo " ##      [8] Monitoring CPU and Memory             ##";
+echo " ##      [9] Reboot Server                         ##";
+echo " ##      [10] Exit                                 ##";
 echo " ##                                                ##";
 echo " ####################################################";
 echo "                                                 ";
@@ -123,19 +121,8 @@ case $choice in
    sudo cat /var/log/apache2/access.log
    fi
    ;;
-
-7)  echo -n "Input Your Domain : "
-    read domain
-    if [ -z "$(ls -A /etc/apache2/sites-available/$domain.conf)" ]; then
-    echo "Domain Not Found, Install Virtual Host"
-    else
-    sudo nano /etc/apache2/sites-available/$domain.conf
-    sudo a2ensite $domain.conf
-    sudo service apache2 reload
-    fi
-    ;;
     
-8) read -p "Install Bandwidth Monitoring? y/n :" -n 1 -r
+7) read -p "Install Bandwidth Monitoring? y/n :" -n 1 -r
    echo  ""
    echo "                                                  ";
    if [[ ! $REPLY =~ ^[Nn]$ ]]
@@ -151,7 +138,7 @@ case $choice in
    fi
    ;;
    
-9) read -p "Install Monitoring CPU and RAM? y/n :" -n 1 -r
+8) read -p "Install Monitoring CPU and RAM? y/n :" -n 1 -r
    echo  ""
    echo "                                                  ";
    if [[ ! $REPLY =~ ^[Nn]$ ]]
@@ -167,7 +154,7 @@ case $choice in
    fi
    ;;
 
-10) read -p "Reboot Your Server? y/n :" -n 1 -r
+9) read -p "Reboot Your Server? y/n :" -n 1 -r
    echo  ""
    echo "                                                  ";
    if [[ ! $REPLY =~ ^[Nn]$ ]]
@@ -176,7 +163,7 @@ case $choice in
    fi
    ;;
    
-11) exit
+10) exit
    ;;
 
 *)    echo "Sorry, Your Choice Not Available"
