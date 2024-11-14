@@ -26,7 +26,10 @@ echo " ##      [1] Install Apache2                      ##";
 echo " ##      [2] Check Log Web Server                 ##";
 echo " ##      [3] Install PHP                          ##";
 echo " ##      [4] Install MySQL                        ##";
-echo " ##      [5] Exit                                 ##";
+echo " ##      [5] Bandwidth Monitoring Server          ##";
+echo " ##      [6] Monitoring CPU and Memory            ##";
+echo " ##      [7] Reboot Server                        ##";
+echo " ##      [8] Exit                                 ##";
 echo " ##                                               ##";
 echo " ###################################################";
 echo "                                                 ";
@@ -83,7 +86,48 @@ case $choice in
    fi
    ;;
 
-5) exit
+5) read -p "Install Bandwidth Monitoring? y/n :" -n 1 -r
+   echo  ""
+   echo "                                                  ";
+   if [[ ! $REPLY =~ ^[Nn]$ ]]
+   then
+   sudo apt install iptraf-ng
+   fi
+   read -p "Check Bandwidth Monitoring? y/n :" -n 1 -r
+   echo  ""
+   echo "                                                  ";
+   if [[ ! $REPLY =~ ^[Nn]$ ]]
+   then
+   iptraf-ng
+   fi
+   ;;
+   
+6) read -p "Install Monitoring CPU and RAM? y/n :" -n 1 -r
+   echo  ""
+   echo "                                                  ";
+   if [[ ! $REPLY =~ ^[Nn]$ ]]
+   then
+   sudo apt install htop
+   fi
+   read -p "Show Monitoring CPU and RAM? y/n :" -n 1 -r
+   echo  ""
+   echo "                                                  ";
+   if [[ ! $REPLY =~ ^[Nn]$ ]]
+   then
+   sudo htop
+   fi
+   ;;
+
+7) read -p "Reboot Your Server? y/n :" -n 1 -r
+   echo  ""
+   echo "                                                  ";
+   if [[ ! $REPLY =~ ^[Nn]$ ]]
+   then
+   reboot
+   fi
+   ;;
+   
+8) exit
    ;;
 
 *)    echo "Sorry, Your Choice Not Available"
