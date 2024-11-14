@@ -95,7 +95,6 @@ case $choice in
 
 5) echo -n "Input Your Domain : "
    read domain
-   if [ -z "$(ls /home/$domain/*)" ]; then
    echo "Install Virtual Host With Domain"
    sudo useradd -m $domain
    sudo passwd $domain
