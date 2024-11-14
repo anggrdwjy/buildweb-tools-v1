@@ -8,27 +8,26 @@ again='y'
 while [[ $again == 'Y' ]] || [[ $again == 'y' ]];
 do
 clear
-echo "                                                             ";
-echo "                                                             ";
-echo "       █▄▄ █░█ █ █░░ █▀▄     █░█░█ █▀▀ █▄▄     ▀█▀ █▀█ █▀█ █░░ █▀     █▀ █▀▀ ▀█▀ █░█ █▀█  ";
-echo "       █▄█ █▄█ █ █▄▄ █▄▀     ▀▄▀▄▀ ██▄ █▄█     ░█░ █▄█ █▄█ █▄▄ ▄█     ▄█ ██▄ ░█░ █▄█ █▀▀  ";
-echo "                                                             ";
-echo "       Developer : github.com/anggrdwjy                      ";
-echo "       Version 1.0.0 | 14/11/2024                            ";
-echo "                                                             ";
-echo " |==========================================================|";
-echo " |                                                          |";
-echo " |     List Menu :                                          |";
-echo " |     [1] Install Apache2                                  |";
-echo " |     [2] Check Log Web Server                             |";
-echo " |     [3] Install PHP                                      |";
-echo " |     [4] Install MySQL                                    |";
-echo " |     [5] Exit                                             |";
-echo " |                                                          |";
-echo " ============================================================";
-echo "                                                             ";
+echo "                                                 ";
+echo "                                                 ";
+echo "       █▄▄ █░█ █ █░░ █▀▄     █░█░█ █▀▀ █▄▄       ";
+echo "       █▄█ █▄█ █ █▄▄ █▄▀     ▀▄▀▄▀ ██▄ █▄█       ";
+echo "                                                 ";
+echo "       ▀█▀ █▀█ █▀█ █░░ █▀                        ";
+echo "       ░█░ █▄█ █▄█ █▄▄ ▄█      by anggrdwjy      ";
+echo "                                                 ";
+echo "       Version 1.0.0 | 14/11/2024                ";
+echo "       ------------------------------------      ";
+echo "       List Menu :                               ";
+echo "       [1] Install Apache2                       ";
+echo "       [2] Check Log Web Server                  ";
+echo "       [3] Install PHP                           ";
+echo "       [4] Install MySQL                         ";
+echo "       [5] Exit                                  ";
+echo "       ------------------------------------      ";
+echo "                                                 ";
 read -p " Select List : " choice;
-echo "                                                            ";
+echo "                                                 ";
 case $choice in
 
 1) read -p "Install Apache2 Now? y/n :" -n 1 -r
