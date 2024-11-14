@@ -23,9 +23,9 @@ echo " ###################################################";
 echo " ##                                               ##";
 echo " ##      List Menu :                              ##";
 echo " ##      [1] Install Apache2                      ##";
-echo " ##      [2] Check Log Web Server                 ##";
-echo " ##      [3] Install PHP                          ##";
-echo " ##      [4] Install MySQL                        ##";
+echo " ##      [2] Install PHP                          ##";
+echo " ##      [3] Install MySQL                        ##";
+echo " ##      [4] Check Log Web Server                 ##";
 echo " ##      [5] Bandwidth Monitoring Server          ##";
 echo " ##      [6] Monitoring CPU and Memory            ##";
 echo " ##      [7] Reboot Server                        ##";
@@ -48,16 +48,7 @@ case $choice in
    fi
    ;;
 
-2) read -p "Check Log Web Server? y/n :" -n 1 -r
-   echo  ""
-   echo "                                             ";
-   if [[ ! $REPLY =~ ^[Nn]$ ]]
-   then
-   sudo cat /var/log/apache2/access.log
-   fi
-   ;;
-
-3) read -p "Install PHP? y/n :" -n 1 -r
+2) read -p "Install PHP? y/n :" -n 1 -r
    echo  ""
    echo "                                             ";
    if [[ ! $REPLY =~ ^[Nn]$ ]]
@@ -71,7 +62,7 @@ case $choice in
    fi
    ;;
 
-4) read -p "Install MySQL? y/n :" -n 1 -r
+3) read -p "Install MySQL? y/n :" -n 1 -r
    echo  ""
    echo "                                             ";
    if [[ ! $REPLY =~ ^[Nn]$ ]]
@@ -86,6 +77,15 @@ case $choice in
    fi
    ;;
 
+4) read -p "Check Log Web Server? y/n :" -n 1 -r
+   echo  ""
+   echo "                                             ";
+   if [[ ! $REPLY =~ ^[Nn]$ ]]
+   then
+   sudo cat /var/log/apache2/access.log
+   fi
+   ;;
+   
 5) read -p "Install Bandwidth Monitoring? y/n :" -n 1 -r
    echo  ""
    echo "                                                  ";
